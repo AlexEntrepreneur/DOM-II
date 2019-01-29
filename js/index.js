@@ -124,3 +124,17 @@ const toastText = document.querySelector('.toast p');
 
   window.addEventListener('resize', resizeCallback);
 })();
+
+(function scrollEvent() {
+  function scrollCallback() {
+    toast.classList.remove('hidden');
+    toastText.textContent = 'Scrolling...';
+
+    setTimeout(function () {
+      toast.classList.add('hidden');
+      toastText.textContent = '';
+    }, 600);
+  }
+
+  document.addEventListener('scroll', scrollCallback);
+})();
