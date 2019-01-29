@@ -5,10 +5,9 @@ const keyPopup = document.querySelector('.keystroke');
 const keyPopupText = document.querySelector('.keystroke h1');
 const toast = document.querySelector('.toast');
 const toastText = document.querySelector('.toast p');
+const navLinks = document.querySelectorAll('a.nav-link');
 
 (function mouseoverEvent() {
-  const navLinks = document.querySelectorAll('a.nav-link');
-
   function mouseOverCallback(eventObject) {
     const { target } = eventObject;
     target.classList.toggle('hover');
@@ -162,7 +161,7 @@ const toastText = document.querySelector('.toast p');
   function dblclickCallback(eventObject) {
     const { target } = eventObject;
     const initialWidth = target.width;
-    
+
     target.classList.add('fixed-middle');
     target.style.width = '80vw';
 
@@ -174,5 +173,12 @@ const toastText = document.querySelector('.toast p');
 
   for (let i = 0; i < allImages.length; i++) {
     allImages[i].addEventListener('dblclick', dblclickCallback);
+  }
+})();
+
+(function preventDefaultEvent() {
+  for (let i = 0; i < navLinks.length; i++) {
+    // Pevents Nav Links From Going To Href
+    navLinks[i].addEventListener('click', (e) => e.preventDefault());
   }
 })();
