@@ -1,5 +1,6 @@
 // Your code goes here
 const allElements = document.querySelectorAll('*');
+const allImages = document.querySelectorAll('img');
 const keyPopup = document.querySelector('.keystroke');
 const keyPopupText = document.querySelector('.keystroke h1');
 const toast = document.querySelector('.toast');
@@ -51,8 +52,6 @@ const toastText = document.querySelector('.toast p');
 })();
 
 (function dragDropEvent() {
-  const siteImages = document.querySelectorAll('img');
-
   function dragCallback(eventObject) {
     const { target } = eventObject;
     target.style.boxShadow = '0 0 50px dodgerblue';
@@ -62,9 +61,9 @@ const toastText = document.querySelector('.toast p');
     target.removeAttribute('style');
   }
 
-  for (let i = 0; i < siteImages.length; i++) {
-    siteImages[i].addEventListener('drag', dragCallback);
-    siteImages[i].addEventListener('dragend', dropCallback);
+  for (let i = 0; i < allImages.length; i++) {
+    allImages[i].addEventListener('drag', dragCallback);
+    allImages[i].addEventListener('dragend', dropCallback);
   }
 })();
 
@@ -156,5 +155,24 @@ const toastText = document.querySelector('.toast p');
 
   for (let i = 0; i < allInputs.length; i++) {
     allInputs[i].addEventListener('select', selectCallback);
+  }
+})();
+
+(function dblclickEvent() {
+  function dblclickCallback(eventObject) {
+    const { target } = eventObject;
+    const initialWidth = target.width;
+    
+    target.classList.add('fixed-middle');
+    target.style.width = '80vw';
+
+    setTimeout(function () {
+      target.style.width = '';
+      target.classList.remove('fixed-middle');
+    }, 2000);
+  }
+
+  for (let i = 0; i < allImages.length; i++) {
+    allImages[i].addEventListener('dblclick', dblclickCallback);
   }
 })();
