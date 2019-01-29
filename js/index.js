@@ -56,13 +56,36 @@ const keyPopupText = document.querySelector('.keystroke h1');
   }
   function dropCallback(eventObject) {
     const { target } = eventObject;
-
     target.removeAttribute('style');
   }
 
   for (let i = 0; i < siteImages.length; i++) {
     siteImages[i].addEventListener('drag', dragCallback);
     siteImages[i].addEventListener('dragend', dropCallback);
+  }
+})();
+
+(function loadEvent() {
+  const allElements = document.querySelectorAll('*');
+  const toast = document.querySelector('.toast');
+  const toastText = document.querySelector('.toast p');
+
+  function loadCallback(eventObject) {
+    const { target } = eventObject;
+    const siteAddress = window.origin + '/';
+    const fileName = target.src.replace(siteAddress, '') || 'file';
+
+    toast.classList.remove('hidden');
+    toastText.textContent = `${fileName} loaded`;
+  }
+
+  setTimeout(function () {
+    toast.classList.add('hidden');
+    toastText.textContent = '';
+  }, 1500);
+
+  for (let i = 0; i < allElements.length; i++) {
+    allElements[i].addEventListener('load', loadCallback);
   }
 })();
 

@@ -50,6 +50,10 @@ img {
   }
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .keystroke {
   position: fixed;
   top: 50%;
@@ -71,7 +75,18 @@ img {
     top: 50%;
     transform: translateY(-50%);
   }
-  &.hidden {
-    visibility: hidden;
+}
+
+.toast {
+  position: fixed;
+  bottom: 10px;
+  right:  10px;
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  border-radius: 5px;
+  padding: 10px 40px;
+
+  p {
+    padding: 0;
   }
 }
