@@ -138,3 +138,23 @@ const toastText = document.querySelector('.toast p');
 
   document.addEventListener('scroll', scrollCallback);
 })();
+
+(function selectEvent() {
+  const allInputs = document.querySelectorAll('input');
+
+  function selectCallback(eventObject) {
+    const { target } = eventObject;
+    const initialValue = target.value;
+
+    target.value = 'Awesome!!';
+    target.style.fontSize = '50px';
+    setTimeout(function () {
+      target.removeAttribute('style');
+      target.value = initialValue;
+    }, 2000);
+  }
+
+  for (let i = 0; i < allInputs.length; i++) {
+    allInputs[i].addEventListener('select', selectCallback);
+  }
+})();
