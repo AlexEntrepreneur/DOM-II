@@ -1,6 +1,9 @@
 // Your code goes here
+const allElements = document.querySelectorAll('*');
 const keyPopup = document.querySelector('.keystroke');
 const keyPopupText = document.querySelector('.keystroke h1');
+const toast = document.querySelector('.toast');
+const toastText = document.querySelector('.toast p');
 
 (function mouseoverEvent() {
   const navLinks = document.querySelectorAll('a.nav-link');
@@ -66,10 +69,6 @@ const keyPopupText = document.querySelector('.keystroke h1');
 })();
 
 (function loadEvent() {
-  const allElements = document.querySelectorAll('*');
-  const toast = document.querySelector('.toast');
-  const toastText = document.querySelector('.toast p');
-
   function loadCallback(eventObject) {
     const { target } = eventObject;
     const siteAddress = window.origin + '/';
@@ -86,6 +85,26 @@ const keyPopupText = document.querySelector('.keystroke h1');
 
   for (let i = 0; i < allElements.length; i++) {
     allElements[i].addEventListener('load', loadCallback);
+  }
+})();
+
+(function focusEvent() {
+  function focusCallback(eventObject) {
+    const { target } = eventObject;
+    const initialColor = target.style.color;
+
+    setInterval(function () {
+      if (target.style.color === initialColor) {
+        target.style.color = 'dodgerblue';
+      }
+      else {
+        target.style.color = initialColor;
+      }
+    }, 500);
+  }
+
+  for (let i = 0; i < allElements.length; i++) {
+    allElements[i].addEventListener('focus', focusCallback);
   }
 })();
 
