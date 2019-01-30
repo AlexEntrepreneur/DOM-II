@@ -4,6 +4,7 @@
   background: @main-bg;
   border-bottom: 2px dashed @navigation-border;
   position: fixed;
+  z-index: 100;
 
   .nav-container {
     height: 100%;
@@ -32,12 +33,16 @@
         width: 100%;
         justify-content: space-around;
       }
-      
-      
+
+
       a {
         font-size: 1.6rem;
         color: @font-color;
         text-decoration: none;
+
+        &.hover {
+          text-shadow: 0 0 30px dodgerblue;
+        }
       }
     }
   }
